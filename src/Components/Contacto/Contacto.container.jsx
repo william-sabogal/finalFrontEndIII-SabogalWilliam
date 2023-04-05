@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Contacto from "./Contacto";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { emailIsNotValid, nameIsNotValid } from "../../Services/authService";
+import { GlobalContext } from "../../Context/GlobalContextProvider";
 
 const ContactoContainer = () => {
+  const { state } = useContext(GlobalContext);
   const navigate = useNavigate();
   const [contact, setContact] = useState({
     name: "",
@@ -108,7 +110,7 @@ const ContactoContainer = () => {
     }
   };
   return (
-    <div>
+    <div id={state.isDark ? "dark" : ""}>
       <Contacto
         handleSubmit={handleSubmit}
         handleChange={handleChange}

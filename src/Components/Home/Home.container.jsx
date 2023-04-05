@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Home from "./Home";
 import { getDentists } from "../../Services/dentistService";
 import { GlobalContext } from "../../Context/GlobalContextProvider";
@@ -22,7 +22,11 @@ const HomeContainer = () => {
   /* retornar sin state
     return <div><Home dentistas={dentistas} /></div> */
 
-  return <div>{<Home dentistas={state.users} />}</div>;
+  return (
+    <div id={state.isDark ? "dark" : ""}>
+      {<Home dentistas={state.users} />}
+    </div>
+  );
 };
 
 export default HomeContainer;

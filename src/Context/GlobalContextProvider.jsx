@@ -4,6 +4,7 @@ export const GlobalContext = createContext();
 const initialState = {
   users: [],
   isDark: false,
+  favs: [],
 };
 const globalReducer = (state, action) => {
   switch (action.type) {
@@ -11,6 +12,10 @@ const globalReducer = (state, action) => {
       return { ...state, users: action.payload };
     case "SWITCH_MODE":
       return { ...state, isDark: !state.isDark };
+    case "FAVS_ADD":
+      return { ...state, favs: action.payload };
+    case "FAVS_REM":
+      return { ...state, favs: [] };
     default:
       state;
   }

@@ -2,11 +2,13 @@ import { Card, CardContent, Typography, CardMedia } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { GlobalContext } from "../../Context/GlobalContextProvider";
 import Swal from "sweetalert2";
 
 const TarjetaDetalle = ({ dentista }) => {
   const [like, setLike] = useState(false);
+  const { state, dispatch } = useContext(GlobalContext);
   const [isChanged, setIsChanged] = useState(false);
   const Toast = Swal.mixin({
     toast: true,
@@ -27,6 +29,7 @@ const TarjetaDetalle = ({ dentista }) => {
         title: `Gracias! 
             ${dentista.username} ha sido gregado a favoritos!`,
       });
+      localStorage.setItem(dentista.id.toString(), JSON.stringify(dentista));
     } else {
       if (isChanged) {
         Toast;
@@ -34,10 +37,11 @@ const TarjetaDetalle = ({ dentista }) => {
           icon: "info",
           title: `${dentista.username} ha sido retirado de favoritos!`,
         });
+        localStorage.removeItem(dentista.id.toString());
       }
     }
   }, [like]);
-
+  console.log(JSON.parse(localStorage.getItem("2")));
   return (
     <Card
       sx={{
