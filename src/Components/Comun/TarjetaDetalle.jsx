@@ -27,6 +27,7 @@ const TarjetaDetalle = ({ dentista }) => {
         title: `Gracias! 
             ${dentista.username} ha sido gregado a favoritos!`,
       });
+      localStorage.setItem(dentista.id.toString(), JSON.stringify(dentista));
     } else {
       if (isChanged) {
         Toast;
@@ -34,10 +35,10 @@ const TarjetaDetalle = ({ dentista }) => {
           icon: "info",
           title: `${dentista.username} ha sido retirado de favoritos!`,
         });
+        localStorage.removeItem(dentista.id.toString());
       }
     }
   }, [like]);
-
   return (
     <Card
       sx={{
