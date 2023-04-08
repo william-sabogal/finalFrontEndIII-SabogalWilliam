@@ -2,13 +2,11 @@ import { Card, CardContent, Typography, CardMedia } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { useEffect, useState, useContext } from "react";
-import { GlobalContext } from "../../Context/GlobalContextProvider";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const TarjetaDetalle = ({ dentista }) => {
   const [like, setLike] = useState(false);
-  const { state, dispatch } = useContext(GlobalContext);
   const [isChanged, setIsChanged] = useState(false);
   const Toast = Swal.mixin({
     toast: true,
@@ -41,7 +39,6 @@ const TarjetaDetalle = ({ dentista }) => {
       }
     }
   }, [like]);
-  console.log(JSON.parse(localStorage.getItem("2")));
   return (
     <Card
       sx={{

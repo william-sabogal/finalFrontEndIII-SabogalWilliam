@@ -18,7 +18,7 @@ const NavbarLayout = () => {
   }, [value]);
   const { state, dispatch } = useContext(GlobalContext);
   return (
-    <div>
+    <div id="navbar">
       <Box sx={{ width: "100%", position: "sticky", top: "0px" }}>
         <BottomNavigation
           showLabels

@@ -15,7 +15,7 @@ const globalReducer = (state, action) => {
     case "FAVS_ADD":
       return { ...state, favs: action.payload };
     case "FAVS_REM":
-      return { ...state, favs: [] };
+      return { ...state, favs: action.payload };
     default:
       state;
   }
